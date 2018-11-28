@@ -17,6 +17,7 @@ public class RequestDispathcherIncludeServlet extends HttpServlet {
         RequestDispatcher  rd=request.getRequestDispatcher("/IncludedServlet?pl=abc");
         out.println("before including"+"<br>");
         rd.include(request,response);
+        out.println("after including"+"<br>");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
