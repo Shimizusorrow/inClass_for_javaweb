@@ -1,4 +1,4 @@
-package com.wzy;
+package com.wzy.javawebclass;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
