@@ -1,4 +1,4 @@
-package com.wzy.javawebclass;
+package com.wzy;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,14 +14,17 @@ import java.util.Properties;
 @WebServlet(name = "GetResourcesServlet",urlPatterns = "/GetResourcesServlet")
 public class GetResourcesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
+
         ServletContext servletContext=this.getServletContext();
-        PrintWriter out=response.getWriter();
-        InputStream in= servletContext.getResourceAsStream("/WEB-INF/classes/resources/itcast.propertise");
+        InputStream in= servletContext.getResourceAsStream("/WEB-INF/classes/resources/itcast.properties");
+
         Properties pros=new Properties();
         pros.load(in);
-        out.write(pros.getProperty("Address"));
-        out.write(pros.getProperty("Company"));
+
+        PrintWriter out=response.getWriter();
+        response.setContentType("text/html;charset=utf-8");
+        out.println(pros.getProperty("Address"));
+        out.println(pros.getProperty("Company"));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
