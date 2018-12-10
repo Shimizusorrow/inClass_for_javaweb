@@ -1,4 +1,4 @@
-package com.wzy.class８;
+package com.wzy.class8;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
