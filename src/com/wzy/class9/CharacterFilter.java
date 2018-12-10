@@ -2,6 +2,8 @@ package com.wzy.class9;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(filterName = "CharacterFilter",urlPatterns = "/*")
@@ -11,11 +13,17 @@ public class CharacterFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        System.out.println("已经汉化");
-        req.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html;charset=utf-8");
-        req.setAttribute("filterdata","Filter Test");
-        chain.doFilter(req, resp);
+        HttpServletRequest request=(HttpServletRequest) req;
+        HttpServletResponse response=(HttpServletResponse)resp;
+
+//        System.out.println("已经汉化");
+//        request.setCharacterEncoding("utf-8");//只对post请求有效
+//        response.setCharacterEncoding("UTF-8");
+//        response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("filterdata","Filter Test");
+//        response.setHeader("content-type","text/html;charset=UTF-8");
+
+        chain.doFilter(request, response);
         System.out.println("汉化完毕");
     }
 
