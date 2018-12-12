@@ -16,7 +16,7 @@ public class CharacterFilter implements Filter {
         HttpServletRequest request=(HttpServletRequest) req;
         HttpServletResponse response=(HttpServletResponse)resp;
 
-//        System.out.println("已经汉化");
+       System.out.println("已经汉化");
 //        request.setCharacterEncoding("utf-8");//只对post请求有效
 //        response.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/html;charset=UTF-8");
