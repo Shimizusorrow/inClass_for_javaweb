@@ -23,8 +23,9 @@ public class UpdateDBServlet extends HttpServlet {
 
             connection = DriverManager.getConnection(url, username, password);
             String sql="UPDATE users SET name ='jsjnew' WHERE name = ?";
-            preparedStatement.setString(1,"jsj");
             preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setString(1,"jsj");
+
             int result=preparedStatement.executeUpdate();
             if(result!=0){
                 response.getWriter().println("update success");
