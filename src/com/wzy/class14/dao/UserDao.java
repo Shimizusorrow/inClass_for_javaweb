@@ -37,6 +37,33 @@ public class UserDao {
         }
         return false;
     }
+    public boolean insertUser(User user){
+        Connection connection=null;
+        PreparedStatement preparedStatement=null;
+        ResultSet resultSet=null;
+        try{
+            //获得数据的链接
+            connection=JDBCUtils.getConnection();
+            // 通过Connection对象获取Statement对象
+            String sql="INSERT INTO users VALUES(?,?,?)";
+            preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setInt(1,user.getId());
+            preparedStatement.setString(2,user.getUsername());
+            preparedStatement.setString(3,user.getPassword());
+            int result=preparedStatement.executeUpdate();
+            if(result>0){
+                return true;
+            }else
+                return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.release(resultSet,preparedStatement,connection);
+        }
+        return false;
+    }
     public ArrayList<User>findAll(){
         Connection connection=null;
         PreparedStatement preparedStatement=null;
