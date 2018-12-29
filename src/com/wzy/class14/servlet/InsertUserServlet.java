@@ -17,11 +17,8 @@ public class InsertUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user=new User();
         user.setId(Integer.valueOf(request.getParameter("id")));
-        user.setUsername(request.getParameter("name"));
+        user.setUsername(request.getParameter("username"));
         user.setPassword(request.getParameter("password"));
-        user.setSex(request.getParameter("sex"));
-        user.setAge(Integer.valueOf(request.getParameter("age")));
-        user.setBirthday(Date.valueOf(request.getParameter("birthday")));
         UserDao userDao=new UserDao();
         if(userDao.insert(user)){
             response.getWriter().println("insert successs");

@@ -12,22 +12,24 @@ import java.io.IOException;
 import java.sql.Date;
 
 
-@WebServlet(name = "RegisterInDbServlet",urlPatterns = "/RegisterInDbServlet")
-public class InsertUserServlet extends HttpServlet {
+@WebServlet(name = "RegisterDbServlet",urlPatterns = "/RegisterDbServlet")
+public class RegisterDbServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user=new User();
         user.setId(Integer.valueOf(request.getParameter("id")));
         user.setUsername(request.getParameter("rusername"));
-        user.setPassword(request.getParameter("password"));
+        user.setPassword(request.getParameter("rpassword"));
         UserDao userDao=new UserDao();
-        if(userDao.insertUser(user)){
+        if(userDao.insert(user)){
             response.sendRedirect("filterlogin.html");
         }else{
             response.sendRedirect("register.html");
         }
-    }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+
+    }
+    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 }

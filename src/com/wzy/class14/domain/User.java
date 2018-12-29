@@ -6,9 +6,6 @@ public class User {
     private int id;
     private String username;
     private String password;
-    private String sex;
-    private int age;
-    private Date birthday;
 
     public int getId() {
         return id;
@@ -34,27 +31,5 @@ public class User {
         this.password = password;
     }
 
-    public String getSex() {
-        return sex;
-    }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
 }

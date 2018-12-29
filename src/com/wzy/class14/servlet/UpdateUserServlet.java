@@ -18,9 +18,6 @@ public class UpdateUserServlet extends HttpServlet {
         user.setId(Integer.valueOf(request.getParameter("id")));
         user.setUsername(request.getParameter("name"));
         user.setPassword(request.getParameter("password"));
-        user.setSex(request.getParameter("sex"));
-        user.setAge(Integer.valueOf(request.getParameter("age")));
-        user.setBirthday(Date.valueOf(request.getParameter("birthday")));
         UserDao userDao=new UserDao();
         if(userDao.insert(user)){
             response.getWriter().println("update successs");

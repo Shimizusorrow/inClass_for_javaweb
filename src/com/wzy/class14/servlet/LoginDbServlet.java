@@ -13,21 +13,25 @@ import java.sql.Date;
 
 
 @WebServlet(name = "LoginDbServlet",urlPatterns = "/LoginDbServlet")
-public class InsertUserServlet extends HttpServlet {
+public class LoginDbServlet extends HttpServlet {
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserDao userDao = new UserDao();
         int id=Integer.valueOf(request.getParameter("id"));
-        UserDao userDao=new UserDao();
-        User user=userDao.findById(id);
-        String username=request.getParameter("username");
-        String password=request.getParameter("password");
-        if(username.equals(user.getUsername)&&password.equals(user.getPassword)){
+        User user = userDao.findById(id);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
             response.sendRedirect("index.html");
-        }else {
+        } else {
             response.sendRedirect("error.html");
         }
-    }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+
+    }
+    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException {
+        doPost(request, response);
     }
 }
